@@ -3,6 +3,7 @@ const studentController =require('../controller/studentController');
 const deptController =require('../controller/departmentController')
 
 router.post('/save',studentController.add);
+router.post('/insert',studentController.insertValues);
 router.get('/get',studentController.findall);
 router.post('/getbyName',studentController.findOneStudent);
 router.put('/updateStudent',studentController.updateStudent)
