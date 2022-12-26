@@ -1,23 +1,23 @@
 const { database } = require("../db");
-//post
-const addDepartment = async (req, res) => {
-  try {
-    const sql = await database.query(
-      "CREATE TABLE deptDetails(id SERIAL PRIMARY KEY,dept_Name VARCHAR NOT NULL,address VARCHAR NOT NULL)"
-    );
-    console.log("TABLE CREATED", sql);
-    res.status(200).json({
-      message: "table created successfully",
-      res: sql,
-    });
-  } catch (error) {
-    console.log("unable to create the table");
-    console.log(error.message);
-    res.status(400).json({
-      message: "table not created successfully",
-    });
-  }
-};
+// //post
+// const addDepartment = async (req, res) => {
+//   try {
+//     const sql = await database.query(
+//       "CREATE TABLE deptDetails(id SERIAL PRIMARY KEY,dept_Name VARCHAR NOT NULL,address VARCHAR NOT NULL)"
+//     );
+//     console.log("TABLE CREATED", sql);
+//     res.status(200).json({
+//       message: "table created successfully",
+//       res: sql,
+//     });
+//   } catch (error) {
+//     console.log("unable to create the table");
+//     console.log(error.message);
+//     res.status(400).json({
+//       message: "table not created successfully",
+//     });
+//   }
+// };
 //insert
 const insertDepartmentValues = async (req, res) => {
   try {
@@ -133,7 +133,7 @@ const deleteDepartment = async (req, res) => {
 };
 
 module.exports = {
-    addDepartment,
+
   insertDepartmentValues,
   findallRecords,
   findOneDepartment,

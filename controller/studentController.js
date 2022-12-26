@@ -2,25 +2,25 @@ const { query } = require("express");
 const format = require("pg-format");
 const { database } = require("../db");
 
-//post
-const add = async (req, res) => {
-  try {
-    const sql = await database.query(
-      "CREATE TABLE if not exists studentDetails(id SERIAL PRIMARY KEY,student_Name VARCHAR NOT NULL,age VARCHAR NOT NULL)"
-    );
-    console.log("TABLE CREATED", sql);
-    res.status(200).json({
-      message: "table created successfully",
-      res: sql,
-    });
-  } catch (error) {
-    console.log("unable to create the table");
-    console.log(error.message);
-    res.status(400).json({
-      message: "table not created successfully",
-    });
-  }
-};
+// //post
+// const add = async (req, res) => {
+//   try {
+//     const sql = await database.query(
+//       "CREATE TABLE if not exists studentDetails(id SERIAL PRIMARY KEY,student_Name VARCHAR NOT NULL,age VARCHAR NOT NULL)"
+//     );
+//     console.log("TABLE CREATED", sql);
+//     res.status(200).json({
+//       message: "table created successfully",
+//       res: sql,
+//     });
+//   } catch (error) {
+//     console.log("unable to create the table");
+//     console.log(error.message);
+//     res.status(400).json({
+//       message: "table not created successfully",
+//     });
+//   }
+// };
 const insert = async (req, res) => {
   try {
     student_name = req.body.student_name;
@@ -261,7 +261,6 @@ DELETE FROM studentdetails  s WHERE s.id =${id};`
 };
 
 module.exports = {
-  add,
   insertValues,
   findall,
   findOneStudent,
