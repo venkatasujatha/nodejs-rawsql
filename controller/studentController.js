@@ -88,9 +88,13 @@ const insertValues = async (req, res) => {
 //findall
 const findall = async (req, res) => {
   try {
+    limit =req.body.limit;
+    offset =req.body.offset
+    //one-to-one
     // const sql = await database.query(`select * from studentDetails,deptDetails WHERE studentDetails.id =deptDetails.dept_id`);
+    //one-to-many
     const sql = await database.query(`SELECT *
-        FROM studentDetails E NATURAL JOIN deptDetails D`);
+        FROM studentDetails E NATURAL JOIN deptDetails D order by id desc limit ${limit} offset ${offset}`);
     console.log("rows in db", sql.rows);
     if (sql.rows < "1") {
       res.status(400).json({ message: "no rows exists in db" });
