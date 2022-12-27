@@ -14,10 +14,16 @@ async function run()
 {
     database.connect();
      await database.query(
+        //one-to-many
         `CREATE TABLE if not exists studentDetails(id SERIAL PRIMARY KEY,student_Name VARCHAR NOT NULL,age VARCHAR NOT NULL);
       
         CREATE TABLE if not exists deptDetails(dept_id SERIAL PRIMARY KEY,dept_Name VARCHAR NOT NULL,address VARCHAR NOT NULL,
-            id INT unique ,CONSTRAINT FK_employee_department  FOREIGN KEY(id) REFERENCES studentDetails(id));`
+            id INT NOT NULL,CONSTRAINT FK_employee_department  FOREIGN KEY(id) REFERENCES studentDetails(id));`
+            //one-to-one
+        // `CREATE TABLE if not exists studentDetails(id SERIAL PRIMARY KEY,student_Name VARCHAR NOT NULL,age VARCHAR NOT NULL);
+      
+        // CREATE TABLE if not exists deptDetails(dept_id SERIAL PRIMARY KEY,dept_Name VARCHAR NOT NULL,address VARCHAR NOT NULL,
+        //     id INT unique ,CONSTRAINT FK_employee_department  FOREIGN KEY(id) REFERENCES studentDetails(id));`
       );
       console.log("DEPARTMENT TABLE CREATED");
       console.log("student TABLE CREATED");

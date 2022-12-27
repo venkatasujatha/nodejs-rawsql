@@ -223,7 +223,7 @@ const deleteStudent = async (req, res) => {
     {
       const sql = await database.query(`DELETE FROM deptdetails  d USING studentDetails s
     WHERE d.id = s.id and s.id = ${id};
-DELETE FROM studentdetails  s WHERE s.id =${id};`
+    DELETE FROM studentdetails  s WHERE s.id =${id};`
      // `delete from studentDetails where student_name='${student_name}'`
     );
     console.log("deleted record from db", sql.rowCount);
