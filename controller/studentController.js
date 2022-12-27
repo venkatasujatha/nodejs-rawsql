@@ -33,7 +33,7 @@ const insert = async (req, res) => {
 // //one-to-many
 const sql = await database.query(
   `INSERT INTO studentDetails(student_name,age) VALUES ('${student_name}','${age}');
-    INSERT INTO deptDetails(dept_name,address,id) VALUES ('${req.body.dept_name[0]}','${req.body.address}',${req.body.id}),('${req.body.dept_name[1]}','${req.body.address}',${req.body.id});`
+    INSERT INTO deptDetails(dept_name,address,id) VALUES ('${req.body.dept_name[0]}','${req.body.address[0]}',${req.body.id}),('${req.body.dept_name[1]}','${req.body.address[1]}',${req.body.id});`
 );
 
     res.status(200).json({
@@ -119,7 +119,7 @@ const findOneStudent = async (req, res) => {
       const sql = await database.query(
         `select *
                   FROM studentdetails
-                  INNER JOIN deptDetails ON studentdetails.id = deptDetails.dept_id  WHERE studentDetails.student_name ='${student_name}' `
+                  INNER JOIN deptDetails ON studentdetails.id = deptDetails.id WHERE studentDetails.student_name ='${student_name}' `
         //   `select * from studentDetails where student_name='${student_name}'
         //   `
       );
@@ -137,7 +137,7 @@ const findOneStudent = async (req, res) => {
       const sql = await database.query(
         `select *
                   FROM studentdetails
-                  INNER JOIN deptDetails ON studentdetails.id = deptDetails.dept_id  WHERE studentDetails.age ='${age}' `
+                  INNER JOIN deptDetails ON studentdetails.id = deptDetails.id  WHERE studentDetails.age ='${age}' `
         //   `select * from studentDetails where student_name='${student_name}'
         //   `
       );
